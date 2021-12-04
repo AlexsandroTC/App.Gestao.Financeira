@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+App.Gestao.Financeira/App.Gestao.Financeira/App.Gestao.Financeira.Android/Resources/Resource.designer.cs
