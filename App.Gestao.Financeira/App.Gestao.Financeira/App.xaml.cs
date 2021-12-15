@@ -1,6 +1,5 @@
-﻿using System;
+﻿using App.Gestao.Financeira.View;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace App.Gestao.Financeira
 {
