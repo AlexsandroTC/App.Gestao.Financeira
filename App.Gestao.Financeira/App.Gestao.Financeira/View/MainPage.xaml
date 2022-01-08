@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Gestao.Financeira.View.MainPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewHome="clr-namespace:App.Gestao.Financeira.View.Home"
+             xmlns:viewExtrato="clr-namespace:App.Gestao.Financeira.View.Extract"
+             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning" BackgroundColor="#dfdfdf">
+    <StackLayout>
+        <Frame BackgroundColor="#9a08a1" Padding="17" CornerRadius="0">
+            <Label Text="Gestão de Financias Pessoais" HorizontalTextAlignment="Center" TextColor="White" FontSize="16"/>
+        </Frame>
+
+        <xct:TabView TabStripPlacement="Bottom"
+                     TabStripBackgroundColor="#a208a9"
+                     TabStripHeight="60"
+                     TabIndicatorColor="#39285E"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="CenterAndExpand">
+            <xct:TabViewItem Text="Extrato"
+                             TextColor="White"
+                             TextColorSelected="White"
+                             FontSize="10"
+                             IsSelected="False">
+                <viewExtrato:ExtractView />
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Home"
+                             TextColor="White"
+                             TextColorSelected="White"
+                             FontSize="10"
+                             IsSelected="True">
+                <viewHome:HomeView />
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Planejamento" 
+                             TextColor="White" 
+                             TextColorSelected="White"
+                             FontSize="10"
+                             IsSelected="False">
+                <viewPlanning:PlanningView />
+            </xct:TabViewItem>
+        </xct:TabView>
+    </StackLayout>
+</ContentPage>
