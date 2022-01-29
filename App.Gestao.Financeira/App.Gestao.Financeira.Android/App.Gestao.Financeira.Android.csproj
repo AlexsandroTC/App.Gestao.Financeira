@@ -71,6 +71,12 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\menu_extrato.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_extrato_selected.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_home.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_home_selected.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_transacoes.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_transacoes_selected.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
