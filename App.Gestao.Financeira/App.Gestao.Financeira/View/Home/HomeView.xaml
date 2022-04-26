@@ -4,7 +4,45 @@
              x:Class="App.Gestao.Financeira.View.Home.HomeView">
   <ContentView.Content>
       <StackLayout>
-          <Label Text="Hello Xamarin.Forms, this is Home page!" />
+          
+          <Frame Margin="20">
+              <FlexLayout Direction="Column">
+                  
+                  <FlexLayout Basis="70" 
+                              JustifyContent="SpaceBetween">
+                      <Label FontSize="Title" Text="Ultimos lançamentos" />
+                      
+                      <FlexLayout JustifyContent="Center"
+                                  AlignItems="Start"
+                                  Basis="70">
+                          <Label Text="expandir"/>
+                          
+                          <Image Source="arrow_down_white"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                      </FlexLayout>    
+                  </FlexLayout>
+                  
+                  <BoxView BackgroundColor="#EFE9E4" 
+                           HeightRequest="1"/>
+                  
+                  <FlexLayout Basis="40"
+                              JustifyContent="SpaceBetween"
+                              AlignItems="Start">
+                      <Button Text="ver Extrato"
+                              TextColor="#0d6EB0"
+                              TextTransform="Lowercase"
+                              FontSize="Medium"
+                              BackgroundColor="Transparent"/>
+                      
+                      <Button Text="detalhes" 
+                              TextColor="#0d6EB0"
+                              TextTransform="Lowercase"
+                              FontSize="Medium"
+                              BackgroundColor="Transparent" />
+                  </FlexLayout>
+                  
+              </FlexLayout>
+          </Frame>
+          
       </StackLayout>
   </ContentView.Content>
 </ContentView>
