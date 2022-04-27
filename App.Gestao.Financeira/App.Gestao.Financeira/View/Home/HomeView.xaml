@@ -1,25 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App.Gestao.Financeira.View.Home.HomeView">
+             x:Class="App.Gestao.Financeira.View.Home.HomeView"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
   <ContentView.Content>
       <StackLayout>
           
           <Frame Margin="20">
               <FlexLayout Direction="Column">
-                  
-                  <FlexLayout Basis="70" 
-                              JustifyContent="SpaceBetween">
-                      <Label FontSize="Title" Text="Ultimos lançamentos" />
+                 
+                  <xct:Expander>
+                      <xct:Expander.Header>
+                          <FlexLayout Basis="80" 
+                                      JustifyContent="SpaceBetween">
+                              <Label FontSize="Title" Text="Ultimos lançamentos" />
                       
-                      <FlexLayout JustifyContent="Center"
-                                  AlignItems="Start"
-                                  Basis="70">
-                          <Label Text="expandir"/>
+                              <FlexLayout JustifyContent="Center"
+                                          AlignItems="Start"
+                                          Basis="70">
+                                  <Label Text="expandir"/>
                           
-                          <Image Source="arrow_down_white"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                      </FlexLayout>    
-                  </FlexLayout>
+                                  <Image Source="seta_baixo_cinza"  
+                                         HorizontalOptions="Center" 
+                                         VerticalOptions="Center"/>
+                              </FlexLayout>    
+                          </FlexLayout>
+                      </xct:Expander.Header>
+                      <xct:Expander.Content>
+                          <CollectionView HeightRequest="150" Margin="0,15,0,15">
+                              <CollectionView.ItemsSource>
+                                  <x:Array Type="{x:Type x:String}">
+                                      <x:String>Santos</x:String>
+                                      <x:String>Palmeiras</x:String>
+                                      <x:String>Flamengo</x:String>
+                                      <x:String>Atlético-MG</x:String>
+                                      <x:String>São Paulo</x:String>
+                                  </x:Array>
+                              </CollectionView.ItemsSource>
+                          </CollectionView>
+                      </xct:Expander.Content>
+                  </xct:Expander>
+                  
+                  
                   
                   <BoxView BackgroundColor="#EFE9E4" 
                            HeightRequest="1"/>
