@@ -8,7 +8,6 @@
           
           <Frame Margin="20">
               <FlexLayout Direction="Column">
-                 
                   <xct:Expander>
                       <xct:Expander.Header>
                           <FlexLayout Basis="80" 
@@ -16,13 +15,23 @@
                               <Label FontSize="Title" Text="Ultimos lançamentos" />
                       
                               <FlexLayout JustifyContent="Center"
-                                          AlignItems="Start"
+                                          AlignItems="Center"
                                           Basis="70">
                                   <Label Text="expandir"/>
                           
-                                  <Image Source="seta_baixo_cinza"  
-                                         HorizontalOptions="Center" 
-                                         VerticalOptions="Center"/>
+                                  <Image Source="seta_baixo_cinza"
+                                         HorizontalOptions="Start"
+                                         VerticalOptions="Center"
+                                         Margin="5,1,0,0">
+                                      <Image.Triggers>
+                                          <DataTrigger TargetType="Image"
+                                                       Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                       Value="True">
+                                              <Setter Property="Source"
+                                                      Value="arrow_up_gray" />
+                                          </DataTrigger>
+                                      </Image.Triggers>
+                                  </Image>
                               </FlexLayout>    
                           </FlexLayout>
                       </xct:Expander.Header>
@@ -39,8 +48,7 @@
                               </CollectionView.ItemsSource>
                           </CollectionView>
                       </xct:Expander.Content>
-                  </xct:Expander>
-                  
+                    </xct:Expander>
                   
                   
                   <BoxView BackgroundColor="#EFE9E4" 
