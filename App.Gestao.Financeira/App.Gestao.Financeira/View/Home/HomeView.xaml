@@ -1,87 +1,89 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Gestao.Financeira.View.Home.HomeView"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
-  <ContentView.Content>
-      <StackLayout>
-          
-          <Frame Margin="20">
-              <FlexLayout Direction="Column">
-                  <xct:Expander>
-                      <xct:Expander.Header>
-                          <FlexLayout Basis="80" 
-                                      JustifyContent="SpaceBetween">
-                              <Label FontSize="Title" Text="Ultimos lançamentos" />
-                      
-                              <FlexLayout JustifyContent="Center"
-                                          AlignItems="Center"
-                                          Basis="70">
-                                  <Label Text="Expandir">
-                                      <Label.Triggers>
-                                          <DataTrigger TargetType="Label"
-                                                       Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
-                                                       Value="True">
-                                              <Setter Property="Text"
-                                                      Value="Ocultar" />
-                                          </DataTrigger>
-                                      </Label.Triggers>
-                                  </Label>
-                          
-                                  <Image Source="seta_baixo_cinza"
-                                         HorizontalOptions="Start"
-                                         VerticalOptions="Center"
-                                         Margin="5,1,0,0">
-                                      <Image.Triggers>
-                                          <DataTrigger TargetType="Image"
-                                                       Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
-                                                       Value="True">
-                                              <Setter Property="Source"
-                                                      Value="arrow_up_gray" />
-                                          </DataTrigger>
-                                      </Image.Triggers>
-                                  </Image>
-                              </FlexLayout>    
-                          </FlexLayout>
-                      </xct:Expander.Header>
-                      <xct:Expander.Content>
-                          <CollectionView HeightRequest="150" Margin="0,15,0,15">
-                              <CollectionView.ItemsSource>
-                                  <x:Array Type="{x:Type x:String}">
-                                      <x:String>Santos</x:String>
-                                      <x:String>Palmeiras</x:String>
-                                      <x:String>Flamengo</x:String>
-                                      <x:String>Atlético-MG</x:String>
-                                      <x:String>São Paulo</x:String>
-                                  </x:Array>
-                              </CollectionView.ItemsSource>
-                          </CollectionView>
-                      </xct:Expander.Content>
-                    </xct:Expander>
-                  
-                  
-                  <BoxView BackgroundColor="#EFE9E4" 
-                           HeightRequest="1"/>
-                  
-                  <FlexLayout Basis="40"
-                              JustifyContent="SpaceBetween"
-                              AlignItems="Start">
-                      <Button Text="ver Extrato"
-                              TextColor="#0d6EB0"
-                              TextTransform="Lowercase"
-                              FontSize="Medium"
-                              BackgroundColor="Transparent"/>
-                      
-                      <Button Text="detalhes" 
-                              TextColor="#0d6EB0"
-                              TextTransform="Lowercase"
-                              FontSize="Medium"
-                              BackgroundColor="Transparent" />
-                  </FlexLayout>
-                  
-              </FlexLayout>
-          </Frame>
-          
-      </StackLayout>
-  </ContentView.Content>
+    <ContentView.Content>
+        <ScrollView>
+            <ScrollView.Content>
+                <StackLayout>
+                    <Frame Margin="20">
+                        <FlexLayout Direction="Column">
+                            <xct:Expander>
+                                <xct:Expander.Header>
+                                    <FlexLayout Basis="80"
+                                                JustifyContent="SpaceBetween">
+                                        <Label FontSize="Title" Text="Ultimos lançamentos" />
+
+                                        <FlexLayout JustifyContent="Center"
+                                                    AlignItems="Center"
+                                                    Basis="70">
+                                            <Label Text="Expandir">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                                 Value="True">
+                                                        <Setter Property="Text"
+                                                                Value="Ocultar" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+
+                                            <Image Source="seta_baixo_cinza"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center"
+                                                   Margin="5,1,0,0">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image"
+                                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                                 Value="True">
+                                                        <Setter Property="Source"
+                                                                Value="arrow_up_gray" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </FlexLayout>
+                                    </FlexLayout>
+                                </xct:Expander.Header>
+                                <xct:Expander.Content>
+                                    <CollectionView HeightRequest="150" Margin="0,15,0,15">
+                                        <CollectionView.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Santos</x:String>
+                                                <x:String>Palmeiras</x:String>
+                                                <x:String>Flamengo</x:String>
+                                                <x:String>Atlético-MG</x:String>
+                                                <x:String>São Paulo</x:String>
+                                            </x:Array>
+                                        </CollectionView.ItemsSource>
+                                    </CollectionView>
+                                </xct:Expander.Content>
+                            </xct:Expander>
+
+                            <BoxView BackgroundColor="#EFE9E4"
+                                     HeightRequest="1"/>
+
+                            <FlexLayout Basis="40"
+                                        JustifyContent="SpaceBetween"
+                                        AlignItems="Start">
+                                <Button Text="ver Extrato"
+                                        TextColor="#0d6EB0"
+                                        TextTransform="Lowercase"
+                                        FontSize="Medium"
+                                        BackgroundColor="Transparent" />
+
+                                <Button Text="detalhes"
+                                        TextColor="#0d6EB0"
+                                        TextTransform="Lowercase"
+                                        FontSize="Medium"
+                                        BackgroundColor="Transparent" />
+                            </FlexLayout>
+
+                        </FlexLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView.Content>
+        </ScrollView>
+    </ContentView.Content>
 </ContentView>
