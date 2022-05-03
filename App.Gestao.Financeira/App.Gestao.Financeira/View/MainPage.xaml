@@ -7,13 +7,6 @@
              xmlns:viewExtrato="clr-namespace:App.Gestao.Financeira.View.Extract"
              xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning">
     <StackLayout>
-        <Frame BackgroundColor="White" Padding="17" CornerRadius="0">
-            <Label Text="Gestão de Financias Pessoais" 
-                   HorizontalTextAlignment="Center" 
-                   TextColor="Black" 
-                   FontSize="16"/>
-        </Frame>
-
         <xct:TabView TabStripPlacement="Bottom"
                      TabStripBackgroundColor="White"
                      TabStripHeight="80"
