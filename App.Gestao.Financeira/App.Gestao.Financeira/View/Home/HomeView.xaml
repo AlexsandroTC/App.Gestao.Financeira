@@ -17,7 +17,16 @@
                               <FlexLayout JustifyContent="Center"
                                           AlignItems="Center"
                                           Basis="70">
-                                  <Label Text="expandir"/>
+                                  <Label Text="Expandir">
+                                      <Label.Triggers>
+                                          <DataTrigger TargetType="Label"
+                                                       Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                       Value="True">
+                                              <Setter Property="Text"
+                                                      Value="Ocultar" />
+                                          </DataTrigger>
+                                      </Label.Triggers>
+                                  </Label>
                           
                                   <Image Source="seta_baixo_cinza"
                                          HorizontalOptions="Start"
