@@ -5,38 +5,41 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewHome="clr-namespace:App.Gestao.Financeira.View.Home"
              xmlns:viewExtrato="clr-namespace:App.Gestao.Financeira.View.Extract"
-             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning" BackgroundColor="#dfdfdf">
+             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning">
     <StackLayout>
-        <Frame BackgroundColor="#9a08a1" Padding="17" CornerRadius="0">
-            <Label Text="Gestão de Financias Pessoais" HorizontalTextAlignment="Center" TextColor="White" FontSize="16"/>
-        </Frame>
-
         <xct:TabView TabStripPlacement="Bottom"
-                     TabStripBackgroundColor="#a208a9"
-                     TabStripHeight="60"
+                     TabStripBackgroundColor="White"
+                     TabStripHeight="80"
                      TabIndicatorColor="#39285E"
                      VerticalOptions="FillAndExpand"
-                     HorizontalOptions="CenterAndExpand">
+                     HorizontalOptions="CenterAndExpand"
+                     IsSwipeEnabled = "False">
             <xct:TabViewItem Text="Extrato"
-                             TextColor="White"
-                             TextColorSelected="White"
-                             FontSize="10"
+                             TextColor="Black"
+                             Icon="menu_extrato"
+                             IconSelected="menu_extrato_selected"
+                             TextColorSelected="Black"
+                             FontSize="11"
                              IsSelected="False">
                 <viewExtrato:ExtractView />
             </xct:TabViewItem>
 
             <xct:TabViewItem Text="Home"
-                             TextColor="White"
-                             TextColorSelected="White"
+                             TextColor="Black"
+                             TextColorSelected="Black"
+                             Icon="menu_home"
+                             IconSelected="menu_home_selected"
                              FontSize="10"
                              IsSelected="True">
                 <viewHome:HomeView />
             </xct:TabViewItem>
 
             <xct:TabViewItem Text="Planejamento" 
-                             TextColor="White" 
-                             TextColorSelected="White"
-                             FontSize="10"
+                             TextColor="Black" 
+                             TextColorSelected="Black"
+                             Icon="menu_transacoes"
+                             IconSelected="menu_transacoes_selected"
+                             FontSize="11"
                              IsSelected="False">
                 <viewPlanning:PlanningView />
             </xct:TabViewItem>

@@ -8,7 +8,6 @@ namespace App.Gestao.Financeira
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
         }
 
