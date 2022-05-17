@@ -43,7 +43,7 @@
                 <ScrollView.Content>
                     <StackLayout>
                         <Frame BackgroundColor="#757575" 
-                               HeightRequest="130">
+                               HeightRequest="140">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" 
                                              Margin="0,0 ,0,10">
@@ -52,29 +52,144 @@
                                            TextColor="White" 
                                            FontSize="Medium"
                                            FontAttributes="Bold"/>    
+                                    
+                                    <Image Source="refresh" />
                                 </StackLayout>
                                 <FlexLayout JustifyContent="SpaceBetween"
                                             AlignItems="Center">
-                                    <Label Text=" R$ -1.536,51" 
+                                    <Label Text="Total Entrada:" 
                                            TextColor="White"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold" />
+                                    <Label TextColor="White"
                                            FontSize="Large"
-                                           FontAttributes="Bold"/>
-                                    <Image Source="refresh" />
-                                    
+                                           FontAttributes="Bold" 
+                                           VerticalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="R$ " />
+                                                <Span Text="{Binding TotalEntrada}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </FlexLayout>
+                                
+                                <FlexLayout JustifyContent="SpaceBetween"
+                                            AlignItems="Center">
+                                    <Label Text="Total Saida:" 
+                                           TextColor="White"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold" />
+                                    <Label TextColor="White"
+                                           FontSize="Large"
+                                           FontAttributes="Bold" 
+                                           VerticalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="R$ " />
+                                                <Span Text="{Binding TotalSaida}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </FlexLayout>
                                 
                                 <BoxView BackgroundColor="#EFE9E4"
                                          HeightRequest="1"/>
                                 
-                                <Label Text="Seu saldo está positivo: R$ 600,00" 
-                                       FontSize="Medium" 
-                                       TextColor="White"
-                                       Margin="0,10" 
-                                       Padding="5"/>
+                                <FlexLayout JustifyContent="SpaceBetween"
+                                            AlignItems="Center">
+                                    <Label Text="Saldo:" 
+                                           FontSize="Medium" 
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+
+                                    <Label Text="{Binding ValorSaldo}" 
+                                           FontSize="Medium" 
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+                                </FlexLayout>
                             </StackLayout>
                         
                         </Frame>
 
+                        <Frame Margin="20">
+                            <FlexLayout Direction="Column">
+                                <xct:Expander>
+                                    <xct:Expander.Header>
+                                        <FlexLayout Basis="80"
+                                                    JustifyContent="SpaceBetween">
+                                            <Label FontSize="Title" Text="Registro rapido" />
+
+                                            <FlexLayout JustifyContent="Center"
+                                                        AlignItems="Center"
+                                                        Basis="70">
+                                                <Label Text="Expandir">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                                     Value="True">
+                                                            <Setter Property="Text"
+                                                                    Value="Ocultar" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+
+                                                <Image Source="seta_baixo_cinza"
+                                                       HorizontalOptions="Start"
+                                                       VerticalOptions="Center"
+                                                       Margin="5,1,0,0">
+                                                    <Image.Triggers>
+                                                        <DataTrigger TargetType="Image"
+                                                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                                                     Value="True">
+                                                            <Setter Property="Source"
+                                                                    Value="arrow_up_gray" />
+                                                        </DataTrigger>
+                                                    </Image.Triggers>
+                                                </Image>
+                                            </FlexLayout>
+                                        </FlexLayout>
+                                    </xct:Expander.Header>
+                                    <xct:Expander.Content>
+                                        <StackLayout>
+                                            <StackLayout>
+                                                <Entry Keyboard="Text" 
+                                                       Placeholder="Descrição" 
+                                                       Text="{Binding Descricao}"/>
+                                            
+                                                <Entry Keyboard="Numeric" 
+                                                       Placeholder="Valor" 
+                                                       Text="{Binding Valor}"/>    
+                                            </StackLayout>
+                                            
+                                            <FlexLayout Basis="40"
+                                                        JustifyContent="SpaceBetween"
+                                                        AlignItems="Start">
+                                                <Button Text="Add. Receita" 
+                                                        TextColor="#0d6EB0"
+                                                        TextTransform="Lowercase"
+                                                        FontSize="Medium"
+                                                        Command="{Binding AdicionarRendimentoCommand}"
+                                                        BackgroundColor="Transparent" />
+                                
+                                                <Button Text="Add. Gastos"
+                                                        TextColor="#0d6EB0"
+                                                        TextTransform="Lowercase"
+                                                        FontSize="Medium"
+                                                        BackgroundColor="Transparent"
+                                                        Command="{Binding AdicionarDespesaCommand}" />
+                                            </FlexLayout>
+                                        </StackLayout>
+                                    </xct:Expander.Content>
+                                </xct:Expander>
+
+                                <BoxView BackgroundColor="#EFE9E4"
+                                         HeightRequest="1"/>
+
+                                
+                            </FlexLayout>
+                        </Frame>
+                        
                         <Frame Margin="20">
                             <FlexLayout Direction="Column">
                             <xct:Expander>
@@ -113,19 +228,30 @@
                                         </FlexLayout>
                                     </FlexLayout>
                                 </xct:Expander.Header>
-                                <xct:Expander.Content>
-                                    <CollectionView HeightRequest="150" Margin="0,15,0,15">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Santos</x:String>
-                                                <x:String>Palmeiras</x:String>
-                                                <x:String>Flamengo</x:String>
-                                                <x:String>Atlético-MG</x:String>
-                                                <x:String>São Paulo</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                    </CollectionView>
-                                </xct:Expander.Content>
+                                    <xct:Expander.Content>
+                                        <CollectionView Margin="0,15,0,15"  HeightRequest="200"
+                                                            ItemsSource="{Binding TransacaoList}">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <FlexLayout JustifyContent="SpaceBetween"
+                                                                    AlignItems="Center">
+                                                        <Label Text="{Binding Descricao}" 
+                                                                   VerticalOptions="Center" 
+                                                                   FontSize="Medium"/>
+                                                        <Label VerticalOptions="Center"
+                                                                   FontSize="Medium">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="R$ " />
+                                                                    <Span Text="{Binding Valor}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </FlexLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </xct:Expander.Content>
                             </xct:Expander>
 
                             <BoxView BackgroundColor="#EFE9E4"
