@@ -14,6 +14,7 @@ namespace App.Gestao.Financeira.View.Home
     {
         public HomeView()
         {
+            BindingContext = new ViewModel.Home.HomeViewModel();
             InitializeComponent();
         }
     }
