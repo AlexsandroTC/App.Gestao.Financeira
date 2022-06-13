@@ -3,8 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Gestao.Financeira.View.Extract.ExtractView">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms, This is Extract page!" />
-      </StackLayout>
+      <Grid>
+          <CollectionView ItemsSource="{Binding TransacaoList}">
+              <CollectionView.ItemTemplate>
+                  <DataTemplate>
+                      <StackLayout Margin="5">
+                          <Frame>
+                              <StackLayout>
+                                  <FlexLayout JustifyContent="SpaceBetween">
+                                      <Image Source="{Binding TypeTransaction}"/> 
+                                      <Label Text="{Binding Descricao}"
+                                             VerticalOptions="Center"
+                                             FontSize="Medium"/>
+                                      <Label VerticalOptions="Center"
+                                             FontSize="Medium">
+                                          <Label.FormattedText>
+                                              <FormattedString>
+                                                  <Span Text="R$ " />
+                                                  <Span Text="{Binding SufixeType}"/>
+                                                  <Span Text="{Binding Valor}" />
+                                              </FormattedString>
+                                          </Label.FormattedText>
+                                      </Label>
+                                  </FlexLayout>
+                              </StackLayout>
+                          </Frame>
+                      </StackLayout>
+                  </DataTemplate>
+              </CollectionView.ItemTemplate>
+          </CollectionView>
+      </Grid>
   </ContentView.Content>
 </ContentView>

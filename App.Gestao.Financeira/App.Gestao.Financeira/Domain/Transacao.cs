@@ -15,5 +15,38 @@ namespace App.Gestao.Financeira.Domain
         public DateTime DataLancamento { get; set; }
         public DateTime DataVencimento { get; set; }
         public bool Programado { get; set; }
+
+                
+        [Ignore]
+        public string TypeTransaction
+        {
+            get
+            {
+                if (Tipo == 2)
+                {
+                    return "Saida";
+                }
+                else
+                {
+                    return "Entrada";
+                }
+            }
+        }
+        
+        [Ignore]
+        public string SufixeType
+        {
+            get
+            {
+                if (Tipo == 2)
+                {
+                    return "-";
+                }
+                else 
+                {
+                    return "";
+                }
+            }
+        }
     }
 }

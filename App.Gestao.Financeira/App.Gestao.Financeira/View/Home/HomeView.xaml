@@ -15,6 +15,7 @@
                 <FlexLayout BackgroundColor="#757575" 
                             AlignItems="Center" 
                             Padding="20">
+                    
                     <!-- <Frame HeightRequest="30" -->
                     <!--        WidthRequest="30" -->
                     <!--        CornerRadius="30" -->
@@ -114,44 +115,15 @@
 
                         <Frame Margin="20">
                             <FlexLayout Direction="Column">
-                                <xct:Expander>
-                                    <xct:Expander.Header>
-                                        <FlexLayout Basis="80"
-                                                    JustifyContent="SpaceBetween">
-                                            <Label FontSize="Title" Text="Registro rapido" />
-
-                                            <FlexLayout JustifyContent="Center"
-                                                        AlignItems="Center"
-                                                        Basis="70">
-                                                <Label Text="Expandir">
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label"
-                                                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
-                                                                     Value="True">
-                                                            <Setter Property="Text"
-                                                                    Value="Ocultar" />
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
-
-                                                <Image Source="seta_baixo_cinza"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="Center"
-                                                       Margin="5,1,0,0">
-                                                    <Image.Triggers>
-                                                        <DataTrigger TargetType="Image"
-                                                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
-                                                                     Value="True">
-                                                            <Setter Property="Source"
-                                                                    Value="arrow_up_gray" />
-                                                        </DataTrigger>
-                                                    </Image.Triggers>
-                                                </Image>
-                                            </FlexLayout>
-                                        </FlexLayout>
-                                    </xct:Expander.Header>
-                                    <xct:Expander.Content>
-                                        <StackLayout>
+                                <FlexLayout Basis="40"
+                                            JustifyContent="SpaceBetween">
+                                            <Label FontSize="Title" Text="Registro rápido" />
+                                </FlexLayout>
+                                
+                                <BoxView BackgroundColor="#EFE9E4"
+                                         HeightRequest="1"/>
+                                
+                                <StackLayout>
                                             <StackLayout>
                                                 <Entry Keyboard="Text" 
                                                        Placeholder="Descrição" 
@@ -180,13 +152,6 @@
                                                         Command="{Binding AdicionarDespesaCommand}" />
                                             </FlexLayout>
                                         </StackLayout>
-                                    </xct:Expander.Content>
-                                </xct:Expander>
-
-                                <BoxView BackgroundColor="#EFE9E4"
-                                         HeightRequest="1"/>
-
-                                
                             </FlexLayout>
                         </Frame>
                         
@@ -229,8 +194,9 @@
                                     </FlexLayout>
                                 </xct:Expander.Header>
                                     <xct:Expander.Content>
-                                        <CollectionView Margin="0,15,0,15"  HeightRequest="200"
-                                                            ItemsSource="{Binding TransacaoList}">
+                                        <CollectionView Margin="0,15,0,15"  
+                                                        HeightRequest="200"
+                                                        ItemsSource="{Binding TransacaoList}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <FlexLayout JustifyContent="SpaceBetween"
@@ -257,21 +223,21 @@
                             <BoxView BackgroundColor="#EFE9E4"
                                      HeightRequest="1"/>
 
-                            <FlexLayout Basis="40"
-                                        JustifyContent="SpaceBetween"
-                                        AlignItems="Start">
-                                <Button Text="ver Extrato"
-                                        TextColor="#0d6EB0"
-                                        TextTransform="Lowercase"
-                                        FontSize="Medium"
-                                        BackgroundColor="Transparent" />
-
-                                <Button Text="detalhes"
-                                        TextColor="#0d6EB0"
-                                        TextTransform="Lowercase"
-                                        FontSize="Medium"
-                                        BackgroundColor="Transparent" />
-                            </FlexLayout>
+                            <!-- <FlexLayout Basis="40" -->
+                            <!--             JustifyContent="SpaceBetween" -->
+                            <!--             AlignItems="Start"> -->
+                            <!--     <Button Text="ver Extrato" -->
+                            <!--             TextColor="#0d6EB0" -->
+                            <!--             TextTransform="Lowercase" -->
+                            <!--             FontSize="Medium" -->
+                            <!--             BackgroundColor="Transparent" /> -->
+                            <!-- -->
+                            <!--     <Button Text="detalhes" -->
+                            <!--             TextColor="#0d6EB0" -->
+                            <!--             TextTransform="Lowercase" -->
+                            <!--             FontSize="Medium" -->
+                            <!--             BackgroundColor="Transparent" /> -->
+                            <!-- </FlexLayout> -->
 
                         </FlexLayout>
                         </Frame>

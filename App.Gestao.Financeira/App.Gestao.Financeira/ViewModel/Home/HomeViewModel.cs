@@ -65,24 +65,29 @@ namespace App.Gestao.Financeira.ViewModel.Home
             AdicionarRendimentoCommand = new Command(() => AdicionarRendimentoAsync());
         }
 
+        
         private async Task AdicionarRendimentoAsync()
         {
-            var trancasao = new Transacao();
-            trancasao.Valor = (decimal)valor;
-            trancasao.Tipo = 1;
-
-            var id = await database.SaveTrancaosaoAsync(trancasao);
-
-            if (valor != null)
+            if (valor != null && !string.IsNullOrWhiteSpace(descricao))
             {
-                TotalEntrada += (decimal)valor;
+                var trancasao = new Transacao();
+                trancasao.Descricao = descricao;
+                trancasao.Valor = (decimal)valor;
+                trancasao.Tipo = 1;
+
+                var id = await database.SaveTrancaosaoAsync(trancasao);
+
+                if (valor > 0)
+                {
+                    TotalEntrada += (decimal)valor;
+                }
+
+                ValorSaldo = totalEntrada - totalSaida;
+                Valor = null;
+                Descricao = null;
+
+                await LoadTransacaoAsync();
             }
-
-            ValorSaldo = totalEntrada - totalSaida;
-            Valor = null;
-            Descricao = null;
-
-            await LoadTransacaoAsync();
         }
 
         private async Task AdicionarDespesaAsync()
@@ -125,7 +130,9 @@ namespace App.Gestao.Financeira.ViewModel.Home
             TotalEntrada = transacoes.Where(c => c.Tipo == 1).Sum(x => x.Valor);
             TotalSaida = transacoes.Where(c => c.Tipo == 2).Sum(x => x.Valor);
             ValorSaldo = totalEntrada - totalSaida;
-
+            
+            transacoes.OrderBy(c => c.DataLancamento);
+            
             TransacaoList.Clear();
             transacoes.ForEach(c =>
             {
