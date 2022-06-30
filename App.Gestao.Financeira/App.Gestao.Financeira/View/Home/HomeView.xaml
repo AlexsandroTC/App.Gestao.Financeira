@@ -35,7 +35,7 @@
                                HorizontalTextAlignment="Center" 
                                TextColor="White"
                                FontAttributes="Bold"
-                               FontSize="16"/>      
+                               FontSize="16"/>
                     </StackLayout>
                 </FlexLayout>
             </StackLayout>
@@ -52,9 +52,12 @@
                                     <Label Text="Saldo em conta"  
                                            TextColor="White" 
                                            FontSize="Medium"
-                                           FontAttributes="Bold"/>    
-                                    
-                                    <Image Source="refresh" />
+                                           FontAttributes="Bold"/>
+
+                                    <ImageButton Source="refresh" 
+                                                 Style="{StaticResource TransparentImageButtonStyle}" 
+                                                 Command="{Binding RefreshLancamentosCommand}"/>
+
                                 </StackLayout>
                                 <FlexLayout JustifyContent="SpaceBetween"
                                             AlignItems="Center">

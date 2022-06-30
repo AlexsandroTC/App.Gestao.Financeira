@@ -22,6 +22,7 @@ namespace App.Gestao.Financeira.Configuration
 
         public Task<int> SaveTrancaosaoAsync(Transacao transacao)
         {
+            transacao.DataLancamento = System.DateTime.Now;
             return _database.InsertAsync(transacao);
         }
     }

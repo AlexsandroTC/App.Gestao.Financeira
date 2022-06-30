@@ -4,7 +4,44 @@
              x:Class="App.Gestao.Financeira.View.Extract.ExtractView">
   <ContentView.Content>
       <Grid>
-          <CollectionView ItemsSource="{Binding TransacaoList}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0"
+                         BackgroundColor="#757575" Padding="5">
+                <FlexLayout JustifyContent="SpaceBetween"
+                            AlignItems="Center">
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Saldo: " 
+                               FontSize="Large" 
+                               TextColor="White"
+                               FontAttributes="Bold"/>
+
+                        <Label TextColor="White"
+                               FontSize="Large"
+                               FontAttributes="Bold" 
+                               VerticalTextAlignment="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="R$ " />
+                                    <Span Text="{Binding ValorSaldo}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <ImageButton Source="refresh" 
+                                     Style="{StaticResource TransparentImageButtonStyle}" 
+                                     Command="{Binding RefreshLancamentosCommand}"/>
+                    </StackLayout>
+                </FlexLayout>
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding TransacaoList}" Grid.Row="1">
               <CollectionView.ItemTemplate>
                   <DataTemplate>
                       <StackLayout Margin="5">

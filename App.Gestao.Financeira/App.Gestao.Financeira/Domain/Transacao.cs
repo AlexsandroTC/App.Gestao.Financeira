@@ -7,7 +7,6 @@ namespace App.Gestao.Financeira.Domain
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        
         public decimal Valor { get; set; }
         public int Categoria { get; set; }
         public string Descricao { get; set; }
@@ -16,7 +15,6 @@ namespace App.Gestao.Financeira.Domain
         public DateTime DataVencimento { get; set; }
         public bool Programado { get; set; }
 
-                
         [Ignore]
         public string TypeTransaction
         {
