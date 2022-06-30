@@ -15,7 +15,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
 
         public Command AdicionarRendimentoCommand { get; }
         public Command AdicionarDespesaCommand { get; }
-        public Command LoadLancamentosCommand { get; }
+        public Command RefreshLancamentosCommand { get; }
 
         public ObservableCollection<Transacao> TransacaoList { get; private set; } = new ObservableCollection<Transacao>();
 
@@ -63,32 +63,37 @@ namespace App.Gestao.Financeira.ViewModel.Home
 
             AdicionarDespesaCommand = new Command(() => AdicionarDespesaAsync());
             AdicionarRendimentoCommand = new Command(() => AdicionarRendimentoAsync());
+            RefreshLancamentosCommand = new Command(() => RefreshLancamentosAsync());
         }
 
+        
         private async Task AdicionarRendimentoAsync()
         {
-            var trancasao = new Transacao();
-            trancasao.Valor = (decimal)valor;
-            trancasao.Tipo = 1;
-
-            var id = await database.SaveTrancaosaoAsync(trancasao);
-
-            if (valor != null)
+            if (valor != null && !string.IsNullOrWhiteSpace(descricao))
             {
-                TotalEntrada += (decimal)valor;
+                var trancasao = new Transacao();
+                trancasao.Descricao = descricao;
+                trancasao.Valor = (decimal)valor;
+                trancasao.Tipo = 1;
+
+                var id = await database.SaveTrancaosaoAsync(trancasao);
+
+                if (valor > 0)
+                {
+                    TotalEntrada += (decimal)valor;
+                }
+
+                ValorSaldo = totalEntrada - totalSaida;
+                Valor = null;
+                Descricao = null;
+
+                await LoadTransacaoAsync();
             }
-
-            ValorSaldo = totalEntrada - totalSaida;
-            Valor = null;
-            Descricao = null;
-
-            await LoadTransacaoAsync();
         }
 
         private async Task AdicionarDespesaAsync()
         {
             var trancasao = new Transacao();
-            trancasao.Descricao = descricao;
             trancasao.Descricao = descricao;
             trancasao.Valor = (decimal)valor;
             trancasao.Tipo = 2;
@@ -121,16 +126,21 @@ namespace App.Gestao.Financeira.ViewModel.Home
         {
             var transacoes = await database.GetTrascaoAsync();
 
-            var list = transacoes.ToList();
+            var list = transacoes.OrderByDescending(c => c.DataLancamento).ToList();
             TotalEntrada = transacoes.Where(c => c.Tipo == 1).Sum(x => x.Valor);
             TotalSaida = transacoes.Where(c => c.Tipo == 2).Sum(x => x.Valor);
             ValorSaldo = totalEntrada - totalSaida;
 
             TransacaoList.Clear();
-            transacoes.ForEach(c =>
+            list.ForEach(c =>
             {
                 TransacaoList.Add(c);
             });
+        }
+
+        private async Task RefreshLancamentosAsync() 
+        {
+            await InitialLoadTransacaoAsync();
         }
     }
 }

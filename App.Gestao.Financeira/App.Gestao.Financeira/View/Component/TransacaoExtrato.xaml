@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Gestao.Financeira.View.Component.TransacaoExtrato">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <FlexLayout Grid.Row="0">
+        <Label Text="Descrição" />        
+        <Label Text="R$ 12.56" />
+    </FlexLayout>
+</Grid>
