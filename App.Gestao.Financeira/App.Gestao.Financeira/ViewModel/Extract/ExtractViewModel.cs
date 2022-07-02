@@ -5,17 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Gestao.Financeira.Configuration;
 using App.Gestao.Financeira.Domain;
+using App.Gestao.Financeira.View.Extract;
 using Xamarin.Forms;
 
 namespace App.Gestao.Financeira.ViewModel.Extract
 {
     public class ExtractViewModel : BaseViewModel
     {
+        private INavigation Navigation => Application.Current.MainPage.Navigation;
         private static Database database;
         public Command RefreshLancamentosCommand { get; }
-
+        public Command SelectItemCommand { get; }
         public ObservableCollection<Transacao> TransacaoList { get; private set; } = new ObservableCollection<Transacao>();
-
+        public Transacao TrasactionSelectItem { get; set; }
+        
         private decimal valorSaldo;
         public decimal ValorSaldo
         {
@@ -31,8 +34,15 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             
             InitialLoadTransacaoAsync();
             RefreshLancamentosCommand = new Command(() => RefreshLancamentosAsync());
+            SelectItemCommand = new Command( SelectItem);
         }
-        
+
+        private void SelectItem(object obj)
+        {
+            var transacao = obj as Transacao;
+            Navigation.PushAsync(new EditExtractView());
+        }
+
         private async Task InitialLoadTransacaoAsync()
         {
             var transacoes = await database.GetTrascaoAsync();

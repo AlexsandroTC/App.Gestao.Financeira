@@ -5,7 +5,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewHome="clr-namespace:App.Gestao.Financeira.View.Home"
              xmlns:viewExtrato="clr-namespace:App.Gestao.Financeira.View.Extract"
-             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning">
+             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning" 
+             NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <xct:TabView TabStripPlacement="Bottom"
                      TabStripBackgroundColor="White"
