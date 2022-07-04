@@ -40,7 +40,7 @@ namespace App.Gestao.Financeira.ViewModel.Extract
         private void SelectItem(object obj)
         {
             var transacao = obj as Transacao;
-            Navigation.PushAsync(new EditExtractView());
+            Navigation.PushAsync(new EditExtractView(transacao));
         }
 
         private async Task InitialLoadTransacaoAsync()

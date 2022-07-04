@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Gestao.Financeira.View.Extract.EditExtractView">
+    <NavigationPage.TitleView>
+        <Label Text="Editar Transação"  
+               FontSize="Title" 
+               TextColor="White"/>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Extract details."
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <StackLayout>
+                <!-- <Label Text="Icon." -->
+                <!--        VerticalOptions="CenterAndExpand" -->
+                <!--        HorizontalOptions="CenterAndExpand" FontSize="Header" /> -->
+                <Label Text="{Binding Descricao}" 
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Label Text="{Binding Valor}" 
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <BoxView BackgroundColor="Black"
+                         HeightRequest="1"/>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
