@@ -8,7 +8,7 @@ namespace App.Gestao.Financeira
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

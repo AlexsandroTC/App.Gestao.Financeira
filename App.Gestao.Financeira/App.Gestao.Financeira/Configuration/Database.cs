@@ -1,3 +1,4 @@
+using System;
 using App.Gestao.Financeira.Domain;
 using SQLite;
 using System.Collections.Generic;
@@ -24,6 +25,12 @@ namespace App.Gestao.Financeira.Configuration
         {
             transacao.DataLancamento = System.DateTime.Now;
             return _database.InsertAsync(transacao);
+        }
+
+        public async Task UpdateTransacaoAsync(Transacao transacao)
+        {
+            transacao.DataUltimaEdicao = DateTime.Now;
+            var teste = await _database.UpdateAsync(transacao);
         }
     }
 }

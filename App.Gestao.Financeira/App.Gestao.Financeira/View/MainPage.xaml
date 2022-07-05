@@ -5,7 +5,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewHome="clr-namespace:App.Gestao.Financeira.View.Home"
              xmlns:viewExtrato="clr-namespace:App.Gestao.Financeira.View.Extract"
-             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning">
+             xmlns:viewPlanning="clr-namespace:App.Gestao.Financeira.View.Planning" 
+             NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <xct:TabView TabStripPlacement="Bottom"
                      TabStripBackgroundColor="White"
@@ -14,16 +15,7 @@
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="CenterAndExpand"
                      IsSwipeEnabled = "False">
-            <xct:TabViewItem Text="Extrato"
-                             TextColor="Black"
-                             Icon="menu_extrato"
-                             IconSelected="menu_extrato_selected"
-                             TextColorSelected="Black"
-                             FontSize="11"
-                             IsSelected="False">
-                <viewExtrato:ExtractView />
-            </xct:TabViewItem>
-
+            
             <xct:TabViewItem Text="Home"
                              TextColor="Black"
                              TextColorSelected="Black"
@@ -32,6 +24,16 @@
                              FontSize="10"
                              IsSelected="True">
                 <viewHome:HomeView />
+            </xct:TabViewItem>
+            
+            <xct:TabViewItem Text="Extrato"
+                             TextColor="Black"
+                             Icon="menu_extrato"
+                             IconSelected="menu_extrato_selected"
+                             TextColorSelected="Black"
+                             FontSize="11"
+                             IsSelected="False">
+                <viewExtrato:ExtractView />
             </xct:TabViewItem>
 
             <xct:TabViewItem Text="Planejamento" 

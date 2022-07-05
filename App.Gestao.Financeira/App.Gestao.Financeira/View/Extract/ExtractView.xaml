@@ -41,11 +41,17 @@
                 </FlexLayout>
             </StackLayout>
 
-            <CollectionView ItemsSource="{Binding TransacaoList}" Grid.Row="1">
+            <CollectionView Grid.Row="1"
+                            x:Name="TransactionList"
+                            ItemsSource="{Binding TransacaoList}">
               <CollectionView.ItemTemplate>
                   <DataTemplate>
                       <StackLayout Margin="5">
                           <Frame>
+                              <Frame.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectItemCommand, Source={x:Reference TransactionList}}" 
+                                                        CommandParameter="{Binding .}"/>
+                              </Frame.GestureRecognizers>
                               <StackLayout>
                                   <FlexLayout JustifyContent="SpaceBetween">
                                       <Image Source="{Binding TypeTransaction}"/> 
