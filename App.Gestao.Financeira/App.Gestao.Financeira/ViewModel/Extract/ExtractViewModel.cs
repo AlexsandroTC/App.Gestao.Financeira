@@ -34,7 +34,7 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             
             InitialLoadTransacaoAsync();
             RefreshLancamentosCommand = new Command(() => RefreshLancamentosAsync());
-            SelectItemCommand = new Command( SelectItem);
+            SelectItemCommand = new Command(SelectItem);
         }
 
         private void SelectItem(object obj)

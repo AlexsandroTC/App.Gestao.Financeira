@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using App.Gestao.Financeira.Domain;
 using App.Gestao.Financeira.ViewModel.Extract;
 using Xamarin.Forms;

@@ -26,25 +26,37 @@
                 <Label Text="{Binding Valor}" 
                        FontSize="Title"
                        HorizontalOptions="Center"
+                       VerticalOptions="Center"/> 
+                
+                <Label Text="{Binding DataEdicao}" 
+                       FontSize="Title"
+                       HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <BoxView BackgroundColor="Black"
                          HeightRequest="1"/>
             </StackLayout>
 
             <StackLayout Grid.Row="1" Margin="20, 15">
-                <Label Text="Categorias:" FontSize="Subtitle" />
-                <Entry Placeholder="Digite o nome da categoria" />
+                <Label Text="Categorias:" 
+                       FontSize="Subtitle" />
+                <Entry Placeholder="Digite o nome da categoria" 
+                       Text="{Binding Categoria}"/>
 
                 <Label Text="Estornar"  FontSize="Subtitle" />
-                <StackLayout Orientation="Horizontal">
-                    <RadioButton Content="Sim" />
-                    <RadioButton Content="Não" IsChecked="True" />
+                
+                <StackLayout Orientation="Horizontal"
+                             RadioButtonGroup.SelectedValue="{Binding Estornar}">
+                    <RadioButton Content="Sim" 
+                                 Value="True"
+                                 IsChecked="{Binding Estornar}"/>
+                    <RadioButton Content="Não" IsChecked="True"/>
                 </StackLayout>
             </StackLayout>
 
             <StackLayout Grid.Row="2"  
                          VerticalOptions="EndAndExpand">
-                <Button  Text="salvar" />
+                <Button Text="Salvar" 
+                        Command="{Binding EditarLancamentoCommand}"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
