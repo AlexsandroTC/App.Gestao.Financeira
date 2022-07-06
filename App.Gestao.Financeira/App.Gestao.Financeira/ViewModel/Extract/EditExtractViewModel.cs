@@ -55,7 +55,6 @@ namespace App.Gestao.Financeira.ViewModel.Extract
         public EditExtractViewModel(Transacao transacao)
         {
             _transacao = transacao;
-            _alert = Application.Current.MainPage;
 
             ShowInfomation();
          
@@ -71,7 +70,7 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             trasacao.Categoria = Categoria;
             trasacao.Estornado = Estornar;
 
-            var confirm = await _alert.DisplayAlert("Confirmar alteração?","Você confirma a ataulização as informações do lançamento.","Sim","Não");
+            var confirm = await Application.Current.MainPage.DisplayAlert("Confirmar alteração?","Você confirma a ataulização as informações do lançamento.","Sim","Não");
             if (confirm)
             {
                 await _database.UpdateTransacaoAsync(trasacao);

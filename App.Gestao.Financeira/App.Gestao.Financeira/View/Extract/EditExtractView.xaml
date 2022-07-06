@@ -14,11 +14,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <StackLayout>
-                <!-- <Label Text="Icon." -->
-                <!--        VerticalOptions="CenterAndExpand" -->
-                <!--        HorizontalOptions="CenterAndExpand" FontSize="Header" /> -->
                 <Label Text="{Binding Descricao}" 
                        FontSize="Title"
                        HorizontalOptions="Center"
@@ -27,11 +24,6 @@
                        FontSize="Title"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/> 
-                
-                <Label Text="{Binding DataEdicao}" 
-                       FontSize="Title"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
                 <BoxView BackgroundColor="Black"
                          HeightRequest="1"/>
             </StackLayout>

@@ -48,5 +48,38 @@ namespace App.Gestao.Financeira.Domain
                 }
             }
         }
+
+
+        [Ignore]
+        public string StatusDescription
+        {
+            get
+            {
+                if (Estornado)
+                {
+                    return "Estornado";
+                }
+                else
+                {
+                    return "Lançado";
+                }
+            }
+        }
+
+        [Ignore]
+        public string CategoriaDescription
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Categoria))
+                {
+                    return "Não Categorizado";
+                }
+                else
+                {
+                    return Categoria;
+                }
+            }
+        }
     }
 }
