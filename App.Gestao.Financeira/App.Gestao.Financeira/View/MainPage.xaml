@@ -15,16 +15,7 @@
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="CenterAndExpand"
                      IsSwipeEnabled = "False">
-            <xct:TabViewItem Text="Extrato"
-                             TextColor="Black"
-                             Icon="menu_extrato"
-                             IconSelected="menu_extrato_selected"
-                             TextColorSelected="Black"
-                             FontSize="11"
-                             IsSelected="False">
-                <viewExtrato:ExtractView />
-            </xct:TabViewItem>
-
+            
             <xct:TabViewItem Text="Home"
                              TextColor="Black"
                              TextColorSelected="Black"
@@ -33,6 +24,16 @@
                              FontSize="10"
                              IsSelected="True">
                 <viewHome:HomeView />
+            </xct:TabViewItem>
+            
+            <xct:TabViewItem Text="Extrato"
+                             TextColor="Black"
+                             Icon="menu_extrato"
+                             IconSelected="menu_extrato_selected"
+                             TextColorSelected="Black"
+                             FontSize="11"
+                             IsSelected="False">
+                <viewExtrato:ExtractView />
             </xct:TabViewItem>
 
             <xct:TabViewItem Text="Planejamento" 
