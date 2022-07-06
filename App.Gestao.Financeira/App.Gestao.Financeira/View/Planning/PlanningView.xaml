@@ -1,10 +1,64 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="App.Gestao.Financeira.View.Planning.PlanningView">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms, this is Planning Page!" />
-      </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="270" />
+                <RowDefinition Height="330" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Label Text="Planejamento" 
+                       Padding="15"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" 
+                       TextColor="White"
+                       BackgroundColor="#757575" 
+                       FontAttributes="Bold"
+                       FontSize="21"/>
+            </StackLayout>
+
+            <Frame Grid.Row="1" Margin="10,0">
+                <FlexLayout Direction="Column">
+                    <StackLayout Margin="0,0,0,5">
+                        <Label FontSize="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Despesas por Categoria" />
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="#EFE9E4"
+                            HeightRequest="3"/>
+
+                    <StackLayout Margin="0, 10">
+                        <microcharts:ChartView HorizontalOptions="FillAndExpand" 
+                                           HeightRequest="160" 
+                                       Chart="{Binding Chart}"/>
+                    </StackLayout>
+                </FlexLayout>
+            </Frame>
+
+            <Frame Grid.Row="2" Margin="10">
+                <FlexLayout Direction="Column">
+                    <StackLayout Margin="0,5,0,5">
+                        <Label FontSize="Title" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center" 
+                               Text="Extrada x Saída" />
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="#EFE9E4"
+                            HeightRequest="3"/>
+
+                    <StackLayout Margin="0,10">
+                        <microcharts:ChartView HorizontalOptions="FillAndExpand" 
+                                           HeightRequest="200" 
+                                       Chart="{Binding LinearChart}"/>
+                    </StackLayout>
+                </FlexLayout>
+            </Frame>
+            
+        </Grid>
   </ContentView.Content>
 </ContentView>
