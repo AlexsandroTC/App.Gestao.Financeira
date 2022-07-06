@@ -4,6 +4,7 @@ using App.Gestao.Financeira.Configuration;
 using App.Gestao.Financeira.Domain;
 using Xamarin.Forms;
 using System.IO;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace App.Gestao.Financeira.ViewModel.Extract
 {
@@ -54,6 +55,8 @@ namespace App.Gestao.Financeira.ViewModel.Extract
         public EditExtractViewModel(Transacao transacao)
         {
             _transacao = transacao;
+            _alert = Application.Current.MainPage;
+
             ShowInfomation();
          
             var path= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "finance.db3");
@@ -68,8 +71,14 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             trasacao.Categoria = Categoria;
             trasacao.Estornado = Estornar;
 
-            await _database.UpdateTransacaoAsync(trasacao);
-            _navigation.PopAsync();
+            var confirm = await _alert.DisplayAlert("Confirmar alteração?","Você confirma a ataulização as informações do lançamento.","Sim","Não");
+            if (confirm)
+            {
+                await _database.UpdateTransacaoAsync(trasacao);
+                _navigation.PopAsync();
+                
+                await Application.Current.MainPage.DisplayToastAsync("Lançamento atualizado com sucesso.");
+            }
         }
 
         private void ShowInfomation()

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace App.Gestao.Financeira.ViewModel.Home
 {
@@ -58,7 +59,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
         {
             var path= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "finance.db3");
             database = new Database(path);
-
+            
             InitialLoadTransacaoAsync();
 
             AdicionarDespesaCommand = new Command(() => AdicionarDespesaAsync());
@@ -78,6 +79,8 @@ namespace App.Gestao.Financeira.ViewModel.Home
 
                 var id = await database.SaveTrancaosaoAsync(trancasao);
 
+                await Application.Current.MainPage.DisplayToastAsync("Entrada registrada com sucesso.");
+
                 if (valor > 0)
                 {
                     TotalEntrada += (decimal)valor;
@@ -89,26 +92,37 @@ namespace App.Gestao.Financeira.ViewModel.Home
 
                 await LoadTransacaoAsync();
             }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Faltou alguns dados", "Faltou informar algum dados para realizar um lançamento.", "Ok");
+            }
         }
 
         private async Task AdicionarDespesaAsync()
         {
-            var trancasao = new Transacao();
-            trancasao.Descricao = descricao;
-            trancasao.Valor = (decimal)valor;
-            trancasao.Tipo = 2;
-
-            var id = await database.SaveTrancaosaoAsync(trancasao);
-            if (valor != null)
+           
+            if (valor != null && !string.IsNullOrWhiteSpace(descricao))
             {
-                TotalSaida += (decimal)valor;
-            }
-            
-            ValorSaldo = totalEntrada - totalSaida;
-            Valor = null;
-            Descricao = null;
+                var trancasao = new Transacao();
+                trancasao.Descricao = descricao;
+                trancasao.Valor = (decimal)valor;
+                trancasao.Tipo = 2;
 
-            await LoadTransacaoAsync();
+                var id = await database.SaveTrancaosaoAsync(trancasao);
+
+                TotalSaida += (decimal)valor;
+
+                ValorSaldo = totalEntrada - totalSaida;
+                Valor = null;
+                Descricao = null;
+
+                await LoadTransacaoAsync(); 
+                await Application.Current.MainPage.DisplayToastAsync("Despesa registrada com sucesso."); ;
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Faltou alguns dados", "Faltou informar algum dados para realizar um lançamento.", "Ok");
+            }
         }
 
         private async Task LoadTransacaoAsync()
@@ -136,6 +150,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
             {
                 TransacaoList.Add(c);
             });
+
         }
 
         private async Task RefreshLancamentosAsync() 
