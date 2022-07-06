@@ -15,7 +15,7 @@
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="CenterAndExpand"
                      IsSwipeEnabled = "False">
-            
+
             <xct:TabViewItem Text="Home"
                              TextColor="Black"
                              TextColorSelected="Black"
@@ -31,7 +31,7 @@
                              Icon="menu_extrato"
                              IconSelected="menu_extrato_selected"
                              TextColorSelected="Black"
-                             FontSize="11"
+                             FontSize="10"
                              IsSelected="False">
                 <viewExtrato:ExtractView />
             </xct:TabViewItem>
@@ -41,7 +41,7 @@
                              TextColorSelected="Black"
                              Icon="menu_transacoes"
                              IconSelected="menu_transacoes_selected"
-                             FontSize="11"
+                             FontSize="10"
                              IsSelected="False">
                 <viewPlanning:PlanningView />
             </xct:TabViewItem>
