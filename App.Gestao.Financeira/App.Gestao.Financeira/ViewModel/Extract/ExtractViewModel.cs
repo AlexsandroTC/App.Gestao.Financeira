@@ -48,8 +48,8 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             var transacoes = await database.GetTrascaoAsync();
 
             var list = transacoes.OrderByDescending(c => c.DataLancamento).ToList();
-            var totalEntrada = transacoes.Where(c => c.Tipo == 1).Sum(x => x.Valor);
-            var totalSaida = transacoes.Where(c => c.Tipo == 2).Sum(x => x.Valor);
+            var totalEntrada = transacoes.Where(c => c.Tipo == 1 && c.Estornado == false).Sum(x => x.Valor);
+            var totalSaida = transacoes.Where(c => c.Tipo == 2 && c.Estornado == false).Sum(x => x.Valor);
             ValorSaldo = totalEntrada - totalSaida;
 
             TransacaoList.Clear();
