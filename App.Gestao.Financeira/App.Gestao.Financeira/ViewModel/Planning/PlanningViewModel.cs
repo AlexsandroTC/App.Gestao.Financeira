@@ -92,13 +92,13 @@ namespace App.Gestao.Financeira.ViewModel.Planning
                     new ChartEntry(1300)
                     {
                         Label = "Entradas",
-                        ValueLabel = "212",
+                        ValueLabel = "4179",
                         Color = SKColor.Parse("#2c3e50")
                     },
                     new ChartEntry(500)
                     {
                         Label = "Saidas",
-                        ValueLabel = "248",
+                        ValueLabel = "1793",
                         Color = SKColor.Parse("#77d065")
                     }
                 }

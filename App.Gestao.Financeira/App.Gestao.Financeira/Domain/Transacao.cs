@@ -1,4 +1,5 @@
 using System;
+using App.Gestao.Financeira.Enum;
 using SQLite;
 
 namespace App.Gestao.Financeira.Domain
@@ -10,7 +11,7 @@ namespace App.Gestao.Financeira.Domain
         public decimal Valor { get; set; }
         public string Categoria { get; set; }
         public string Descricao { get; set; }
-        public int Tipo { get; set; }
+        public TipoTransacao Tipo { get; set; }
         public DateTime DataLancamento { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime DataUltimaEdicao { get; set; }
@@ -22,7 +23,7 @@ namespace App.Gestao.Financeira.Domain
         {
             get
             {
-                if (Tipo == 2)
+                if (Tipo == TipoTransacao.Saida)
                 {
                     return "Saida";
                 }
@@ -38,7 +39,7 @@ namespace App.Gestao.Financeira.Domain
         {
             get
             {
-                if (Tipo == 2)
+                if (Tipo == TipoTransacao.Saida)
                 {
                     return "-";
                 }

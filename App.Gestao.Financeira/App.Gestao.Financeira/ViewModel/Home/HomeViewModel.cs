@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.CommunityToolkit.Extensions;
+using App.Gestao.Financeira.Enum;
 
 namespace App.Gestao.Financeira.ViewModel.Home
 {
@@ -18,6 +19,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
         public Command AdicionarDespesaCommand { get; }
         public Command RefreshLancamentosCommand { get; }
 
+        #region
         public ObservableCollection<Transacao> TransacaoList { get; private set; } = new ObservableCollection<Transacao>();
 
         private decimal totalEntrada;
@@ -54,6 +56,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
             get => descricao;
             set => SetProperty(ref descricao, value);
         }
+        #endregion
 
         public HomeViewModel()
         {
@@ -75,7 +78,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
                 var trancasao = new Transacao();
                 trancasao.Descricao = descricao;
                 trancasao.Valor = (decimal)valor;
-                trancasao.Tipo = 1;
+                trancasao.Tipo = TipoTransacao.Entrada;
 
                 var id = await database.SaveTrancaosaoAsync(trancasao);
 
@@ -106,7 +109,7 @@ namespace App.Gestao.Financeira.ViewModel.Home
                 var trancasao = new Transacao();
                 trancasao.Descricao = descricao;
                 trancasao.Valor = (decimal)valor;
-                trancasao.Tipo = 2;
+                trancasao.Tipo = TipoTransacao.Saida;
 
                 var id = await database.SaveTrancaosaoAsync(trancasao);
 
@@ -142,8 +145,8 @@ namespace App.Gestao.Financeira.ViewModel.Home
 
             var list = transacoes.OrderByDescending(c => c.DataLancamento).Where(x => x.Estornado == false).ToList();
             
-            TotalEntrada = list.Where(c => c.Tipo == 1).Sum(x => x.Valor);
-            TotalSaida = list.Where(c => c.Tipo == 2).Sum(x => x.Valor);
+            TotalEntrada = list.Where(c => c.Tipo == TipoTransacao.Entrada).Sum(x => x.Valor);
+            TotalSaida = list.Where(c => c.Tipo == TipoTransacao.Saida).Sum(x => x.Valor);
             ValorSaldo = totalEntrada - totalSaida;
 
             TransacaoList.Clear();

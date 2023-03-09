@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Gestao.Financeira.Configuration;
 using App.Gestao.Financeira.Domain;
+using App.Gestao.Financeira.Enum;
 using App.Gestao.Financeira.View.Extract;
 using Xamarin.Forms;
 
@@ -48,8 +49,8 @@ namespace App.Gestao.Financeira.ViewModel.Extract
             var transacoes = await database.GetTrascaoAsync();
 
             var list = transacoes.OrderByDescending(c => c.DataLancamento).ToList();
-            var totalEntrada = transacoes.Where(c => c.Tipo == 1 && c.Estornado == false).Sum(x => x.Valor);
-            var totalSaida = transacoes.Where(c => c.Tipo == 2 && c.Estornado == false).Sum(x => x.Valor);
+            var totalEntrada = transacoes.Where(c => c.Tipo == TipoTransacao.Entrada && c.Estornado == false).Sum(x => x.Valor);
+            var totalSaida = transacoes.Where(c => c.Tipo == TipoTransacao.Saida && c.Estornado == false).Sum(x => x.Valor);
             ValorSaldo = totalEntrada - totalSaida;
 
             TransacaoList.Clear();
